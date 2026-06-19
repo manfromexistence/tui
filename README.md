@@ -322,3 +322,4 @@ Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\dx-www.exe -Force
 - Size:          [size of our www project means the whole project with all current folder size]
 ✓ Ready in 5.9s
 
+No big explainations or No, need to create implementaion plan, tasks, or walkthrough - just please fix it correctly!!! Just do as I say as token efficienlty as possible as I am 7+ old experience programmer no a vibe coder - So, I know most of the stuffs!!!
