@@ -309,3 +309,16 @@ Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\dx.exe -Force
 Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\www.exe -Force
 Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\dx-www.exe -Force
 ```
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.101:3000
+- Environments: .env.local
+✓ Ready in 5.9s
+
+◆ Www 0.0.1 (Dx)
+- Name:          Dx www
+- Local:         http://localhost:3000
+- Size:          [size of our www project means the whole project with all current folder size]
+✓ Ready in 5.9s
+
