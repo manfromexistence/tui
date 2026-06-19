@@ -298,4 +298,14 @@ echo "Your new private repo is ready: https://github.com/$(gh api user --jq .log
 REPO_NAME=$(basename "$PWD") && OWNER=$(gh api user --jq .login) && rm -rf .git && git init && git add . && git commit -m "feat: initial commit" && if gh repo view "$REPO_NAME" >/dev/null 2>&1; then DEPR="${REPO_NAME}-deprecated"; i=0; while gh repo view "$DEPR" >/dev/null 2>&1; do i=$((i+1)); DEPR="${REPO_NAME}-deprecated-$i"; done; echo "Renaming existing '$REPO_NAME' to '$DEPR'..."; gh repo rename -R "$OWNER/$REPO_NAME" "$DEPR" --yes || true; sleep 3; fi && gh repo create "$REPO_NAME" --private --source=. --push
 ```
 
+### Build dx-www CLI (Release Mode, 12 Jobs)
 
+```bash
+# Build the binary with 12 jobs
+cargo build --release -p dx-www -j 12
+
+# Deploy the binary to the bin directory (PowerShell)
+Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\dx.exe -Force
+Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\www.exe -Force
+Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\dx-www.exe -Force
+```
