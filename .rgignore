@@ -1,0 +1,14 @@
+.git/
+.dx/
+trash/
+**/target/
+**/node_modules/
+**/.next/
+**/dist/
+**/build/
+**/.tmp/
+**/.worktrees/
+**/vendor/
+**/*.pdb
+**/*.exe
+**/*.dll

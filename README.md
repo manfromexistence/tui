@@ -1,0 +1,301 @@
+# Dx
+
+Enhanced Development Experience
+
+Now this is dx ecosystem and please kindly use that and try to build cli project in the ci/cd pipelines correctly and in cli we and others we are currently use local folder but please use "https://github.com/essence-dx/check" and these types of url as cargo supports github repos so please use that instead of using local repos and first please build cli locally using the organization url and this is a github organization with all the 21 repos there https://github.com/essence-dx/[all current local proejct repos are there] so please kindly use that and locally please build these and also the current subfolders excepte, code and extensions and for python build package-manager and we have python with c and we can build and also for bun means js and tauri means native and rolldown means build so please try to build using the github repos instead of local paths one by one:
+cli
+
+agent
+www
+native
+build
+js
+py/package-manager
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+check
+dcp
+driven
+flow
+forge
+i18n
+icon
+media
+metasearch
+providers
+serializer
+style
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cli
+build
+js
+py
+native
+www
+extensions
+docs
+scripts
+bin
+github
+.dx
+
+git remote add manfromexistence https://github.com/manfromexistence/agent
+git remote add manfromexistence https://github.com/manfromexistence/build
+git remote add manfromexistence https://github.com/manfromexistence/check
+git remote add manfromexistence https://github.com/manfromexistence/cli
+git remote add manfromexistence https://github.com/manfromexistence/dcp
+git remote add manfromexistence https://github.com/manfromexistence/driven
+git remote add manfromexistence https://github.com/manfromexistence/extensions
+git remote add manfromexistence https://github.com/manfromexistence/flow
+git remote add manfromexistence https://github.com/manfromexistence/forge
+git remote add manfromexistence https://github.com/manfromexistence/i18n
+git remote add manfromexistence https://github.com/manfromexistence/icon
+git remote add manfromexistence https://github.com/manfromexistence/js
+git remote add manfromexistence https://github.com/manfromexistence/media
+git remote add manfromexistence https://github.com/manfromexistence/metasearch
+git remote add manfromexistence https://github.com/manfromexistence/native
+git remote add manfromexistence https://github.com/manfromexistence/providers
+git remote add manfromexistence https://github.com/manfromexistence/py
+git remote add manfromexistence https://github.com/manfromexistence/serializer
+git remote add manfromexistence https://github.com/manfromexistence/style
+git remote add manfromexistence https://github.com/manfromexistence/tools
+git remote add manfromexistence https://github.com/manfromexistence/www
+
+In our dx folder there are github repositories that we are working on and there we need to add a new remote called essence-dx and there we first need to create github repository in our essence-dx organization via my gh cli miller-carla accounts correctly - and for all projects other than the code we need to push to essence-dx remote and we have to use current project's dev branch and only for code project we need to push code branch in to our essence-dx/code project correctly
+git remote add essence-dx https://github.com/essence-dx/test and things like that and we need to create those repositories in essence-dx organization
+
+git push manfromexistence dev
+
+## Child Repository Remotes
+
+In our dx folder there are github repositories that we are working on and there we need to add a new remote called essence-dx and there we first need to create github repository in our essence-dx organization via my gh cli miller-carla accounts correctly - and for all projects other than the code we need to push to essence-dx remote and we have to use current project's dev branch and only for code project we need to push code branch in to our essence-dx/code project correctly
+git remote add essence-dx https://github.com/essence-dx/test and things like that and we need to create those repositories in essence-dx organization
+and we will create organization repositories for each project in essence-dx organization as our current dx folder structure child folder like for agent folder we will create essence-dx/agent repository and things like that!!! and we already have these repos so just need to crease those repo in my essence-dx organization and then create remote in these github projects and push them correctly
+
+### agent
+- gitlab: https://gitlab.com/manfromexistence/dx-agents.git
+- origin: https://github.com/millercarla211-ctrl/dx-agents.git
+- upstream: https://github.com/zeroclaw-labs/zeroclaw.git
+
+### build
+- gitlab: https://gitlab.com/manfromexistence/rolldown.git
+- origin: https://github.com/millercarla211-ctrl/rolldown.git
+- upstream: https://github.com/rolldown/rolldown.git
+
+### check
+- gitlab: https://gitlab.com/manfromexistence/dx-check.git
+- origin: https://github.com/millercarla211-ctrl/dx-check.git
+
+### cli
+- gitlab: https://gitlab.com/manfromexistence/dx-cli.git
+- local-mirror: G:\Cli
+- origin: https://github.com/millercarla211-ctrl/dx-cli.git
+
+### code
+- gitlab: https://gitlab.com/manfromexistence/zed.git
+- manfromexistence: https://github.com/manfromexistence/code
+- origin: https://github.com/millercarla211-ctrl/zed
+- upstream: https://github.com/zed-industries/zed.git
+
+### dcp
+- gitlab: https://gitlab.com/manfromexistence/dcp.git
+- origin: https://github.com/millercarla211-ctrl/dcp.git
+
+### driven
+- gitlab: https://gitlab.com/manfromexistence/dx-driven.git
+- origin: https://github.com/millercarla211-ctrl/dx-driven.git
+
+### extensions
+- gitlab: https://gitlab.com/manfromexistence/dx-extensions.git
+- origin: https://github.com/millercarla211-ctrl/dx-extensions.git
+
+### flow
+- gitlab: https://gitlab.com/manfromexistence/flow.git
+- legacy: https://github.com/manfromexistence/flow.git
+- origin: https://github.com/millercarla211-ctrl/flow.git
+
+### forge
+- gitlab: https://gitlab.com/manfromexistence/forge.git
+- origin: https://github.com/millercarla211-ctrl/forge.git
+
+### i18n
+- gitlab: https://gitlab.com/manfromexistence/dx-i18n.git
+- origin: https://github.com/millercarla211-ctrl/dx-i18n.git
+
+### icon
+- gitlab: https://gitlab.com/manfromexistence/dx-icon.git
+- origin: https://github.com/millercarla211-ctrl/dx-icon.git
+
+### js
+- gitlab: https://gitlab.com/manfromexistence/bun.git
+- origin: https://github.com/millercarla211-ctrl/bun.git
+- upstream: https://github.com/oven-sh/bun.git
+
+### media
+- gitlab: https://gitlab.com/manfromexistence/dx-media.git
+- origin: https://github.com/millercarla211-ctrl/dx-media.git
+
+### metasearch
+- gitlab: https://gitlab.com/manfromexistence/dx-metasearch.git
+- origin: https://github.com/millercarla211-ctrl/dx-metasearch.git
+
+### native
+- gitlab: https://gitlab.com/manfromexistence/tauri.git
+- origin: https://github.com/millercarla211-ctrl/tauri.git
+- upstream: https://github.com/tauri-apps/tauri.git
+
+### providers
+- gitlab: https://gitlab.com/manfromexistence/dx-providers.git
+- origin: https://github.com/millercarla211-ctrl/dx-providers.git
+
+### py
+- gitlab: https://gitlab.com/manfromexistence/dx-py.git
+- origin: https://github.com/millercarla211-ctrl/dx-py.git
+
+### serializer
+- gitlab: https://gitlab.com/manfromexistence/dx-serializer.git
+- origin: https://github.com/millercarla211-ctrl/dx-serializer.git
+
+### style
+- gitlab: https://gitlab.com/manfromexistence/dx-style.git
+- origin: https://github.com/millercarla211-ctrl/dx-style.git
+
+### tools
+- gitlab: https://gitlab.com/manfromexistence/dx-tools.git
+- origin: https://github.com/millercarla211-ctrl/dx-tools.git
+
+### www
+- gitlab: https://gitlab.com/manfromexistence/dx-www.git
+- legacy-inspirations: https://github.com/millercarla211-ctrl/dx-www-inspirations.git
+- local-mirror: G:\WWW
+- origin: https://github.com/millercarla211-ctrl/dx-www.git
+
+
+Now in our code editor please do these correctly and after doing all of these please run just run and fix any errors you find!!!
+1. at the ai screen at the topbar left side dropdown the codex, claude... agents are showing but in our code editor assets we have icons for them separately so please kindly use those icons
+2. Now as we are fork of zed code editor and if no account is signed then we show the suscription banner in our ai screen right so please say there it totally from zed and we are giving the suscriptions as we are also zed fork and all thank goes to zed and also we recently made the topbar of the ai screen to be fixed on the top of the ai screen and that banner we like have to respect for that and have to add more padding top so please like give the height of the ai screen as the height of the ai screen minus the height of the topbar and then we can add that padding top to that suscription banner so it will be shown below the topbar and if we are in ai screen then if we are trying to to another screen then its not going there correctly and always just crashing the app
+3. Now, in our code screen the save of untitled is not showing the dialgue so please fix that correctly
+4. In our sidebar when we are clicking on the cog icon means the settings then its showing as a another window which is fine but like by default it will show on top of the code editor so its not doing that so please fix that correctly + and in our sidebar under the 12 grid cells there is pinnded and all check row and in the right side there is clock icon always show on the left you are showing icons on hover but I mainly told you do so in right means I don't want to show the clock icon all the time like so just remove the left icons on hover and put it in the right side and remove the clock icon from ther!!!
+5. And our webpreivew screen is not working as its saying native webpreivew is not supported or things like that so please fix that correctly as it was working before so please kindly fix that what is wrong there!!!
+
+Now in our here at our code editor please do these:
+At the sidebar -
+1. At the bottom of the 12 grid cells we need to show icons in the right side at the pinned and also chat and put some right click and other interactions there correclty as currently they are looking dummy but they are very font-facing options so they need to have so much features
+2. in our bottom of that we have our chat options and has more icons in the chat row right so if we click on that its showing a options menu but its closing even when we are trying to select it means its showing it when our mouse is on the more icon but in order to select option we need to show it and keep it open until we click elsewhere or click on options as we will be needing to change our mouse position so please fix that logic correctly
+3. We have cog icon means setting - currently when we click it its going to setting code screen that is good but if you can then please show our setting sidebar panel or menu - previously we were doing that but its showing the menu in other window and also doing it in a way so that we can't see it when we click on as it should open on top of our current windows first then we can minimize but it wasn't doing that so please fix that correclty
+
+Ai screen and Ai Panel:
+1. In our ai screen there is 9 icons options in the chat-input bottom center so its good but the container of them is good but the icons are not center of those container so please do so and also when clicked on icon we will go to webpreivew screen and run that project using our axum or other server as those are assets in our root assets folder with html, css and js and if you can't find them - then please build 7 nextjs project and in Whiteboard and Shader you can find www framework project right so in there you can just run dx build and in those projects you can see .dx/www/output and there you can find html, css and js and just copy those to our root assets folder and render them using axum and in our webpreivew just open those local runing urls correctly and when we like clicked those icons then in our center top of the statusbar we will show 10 icons 9 web tools icons like the chatinput center and otehr back button to control webtools correctly
+2. If we are in ai panel then we don't need to show the 9 icons in the center bottom
+2. In our ai screen when are on it we are not going to another screens easily or menus are not showing that well so please fix that correctly
+
+
+1. For our skils panel in the top right please use a database or api that gives skills like thousands of skills and featch them correctly - use icons in that panel for insert and other actions
+2. Please fix our forge as we are going to packages or other tabs in that panel its crasing the app
+3. In our media screen we are showing media from urls but our media crates has millions of media but we are just showing 700 of them so please use pagination or infinite scroll to show more media and also we need to add search and filter options there as well so we can easily find the media we are looking for and use icons in that panel for insert and other actions
+
+Now, don't do anything and just answer me - Does our cli projects connects all of our dx tools like: agent/  build/  dcp/   driven/  forge/  icon/  media/       native/     serializer/  www/    check/  flow/     i18n/   js/    metasearch/  providers/  py/    style/
+Or not like we have to able to use all these from our cli so can we do current or not like what we can't use right now or what is not that well connected??
+
+
+Now, here is the prob
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+flow - now just check don't do anything and tell me are we using flow/metesearch/serializer/ or other folder and what we are using - just chcek stuffs and give me answer!!!
+
+check
+dcp
+driven
+forge
+i18n
+icon
+media
+metasearch
+providers
+serializer
+style
+
+Good, we are almost done - I fixed native and build - so we just need to fix the www and then cli and then we are done
+So the setup will be like this: Now even for www and cil I have added CIRCLECI_GH_TOKEN - So we can complete this correctly!!!
+1. We make our millercarla-ctrl personal projects to private as circle ci can access it and it will be connected to essence-dx organization repos and even through we buld we from millercarla-ctrl/dx-cli it will be put outputs to essence-dx/repos
+2. First in our circle ci like this we will buld www, native, js, py, build and agents
+3. Push those artifacts to our essence-dx organization repos
+4. In our cli project we will use those build stuffs from there "www, native, js, py, build and agents" project from our essence-dx/repos artifacts and then will create our dx main cli binary and put that to our essence-dx/cli
+5. And for now we will maintain main branch no other brainches as things can get complicated like that and now we will only build windows until you complete our cli build and after all of these we will download that cli binary locally to test if everything is working or not
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Other cli commands
+2. Code
+3. Dx
+
+1. In our ai screen: At our topbar left ai agents dropdown just before the opencode please add Glm agent that our code editor already has in acp with its own custom icons so please show it there correctly + for now just comment out the search and media profile from the chatinput box ai profile dorpdown so only Agent and Ask will stay there
+2. In our main topbar right side please do this: comment out forge icon for now + at the media panel please featch more media as we have milliosn of media but still only showing 700 media + in our ui panel by default on the right there are text please show icon there actions actions and make ti funtional instead of that dummy compact text + And in our skills panel please featch these skills from api:
+
+Now, please forgot everything from the past and just do this correctly this time:
+In our code editor:
+1. We have plugin screen so there at the plugins container please hide the icons as all the icons are same so just remove that icons container correctly and the plugins is in row view so please put it like grid items like the extension tabs extensions where in one row show multiple columns if there is space correctly
+2. In our topbar right there is icons panel and some text in our primary color on on the right so please remove that as those are maybe broken texts or things like that so please remove them correctly
+3. In our ai screen there is 10 icons when we arec container when we are clicking on the 9 icons in the chatinput bottom center but there is small gap in the right in that 10 icons compact container and also they need to go to webpreview screen but they are still at the ai screen and also in our webpreivew screen please put that 10 icons container and at the webpreview container instead of running those 9 websites its showing this "Webpreview nagivation failed before the website became ready" or things like that errors in our webpreview tab on that url!!!
+
+In here please replace the rocket emoji to ◆ icon and just remove the Hot reload text and kee the project text correctly
+PS G:\Dx\TEST> dx dev     
+Starting development server...
+
+🚀 Development server running at http://127.0.0.1:3000
+   Hot reload: enabled
+   Project: TEST
+
+Press Ctrl+C to stop the server
+
+→ GET / - 89.24ms - 20.50 KB
+
+rm -rf .git && git init && git add . && git commit -m "feat: initial commit" && gh repo create build --private && git remote add origin https://github.com/millercarla211-ctrl/build && git push -u origin main
+
+
+
+# Command:
+
+```bash
+#!/bin/bash
+set -e
+
+# Get only the last folder name (e.g. "build" from /g/Dx/build)
+REPO_NAME=$(basename "$PWD")
+
+echo "📁 Current folder: $REPO_NAME"
+echo "🗑️  Removing existing .git folder..."
+rm -rf .git
+
+echo "🔧 Initializing fresh git repo..."
+git init
+git add .
+git commit -m "feat: initial commit"
+
+echo "🔍 Checking if GitHub repo '$REPO_NAME' already exists in your account..."
+if gh repo view "$REPO_NAME" > /dev/null 2>&1; then
+    DEPRECATED_NAME="${REPO_NAME}-deprecated"
+    echo "⚠️  Repo '$REPO_NAME' already exists!"
+    echo "🔄 Renaming it to '$DEPRECATED_NAME'..."
+    gh repo rename -R "$REPO_NAME" "$DEPRECATED_NAME" --yes
+else
+    echo "✅ No existing repo with name '$REPO_NAME'. Proceeding..."
+fi
+
+echo "🚀 Creating new **private** GitHub repo '$REPO_NAME' and pushing..."
+gh repo create "$REPO_NAME" --private --source=. --push
+
+echo ""
+echo "✅ Done!"
+echo "Your new private repo is ready: https://github.com/$(gh api user --jq .login)/$REPO_NAME"
+```
+
+```bash
+REPO_NAME=$(basename "$PWD") && OWNER=$(gh api user --jq .login) && rm -rf .git && git init && git add . && git commit -m "feat: initial commit" && if gh repo view "$REPO_NAME" >/dev/null 2>&1; then DEPR="${REPO_NAME}-deprecated"; i=0; while gh repo view "$DEPR" >/dev/null 2>&1; do i=$((i+1)); DEPR="${REPO_NAME}-deprecated-$i"; done; echo "Renaming existing '$REPO_NAME' to '$DEPR'..."; gh repo rename -R "$OWNER/$REPO_NAME" "$DEPR" --yes || true; sleep 3; fi && gh repo create "$REPO_NAME" --private --source=. --push
+```
+
+
