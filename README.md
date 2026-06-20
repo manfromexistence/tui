@@ -375,3 +375,6 @@ Now this is what I need - we need to create a new command called dx www build --
 www framework build --sandbox with imgbb images and only file html!!!
 
 Now in our meteasearch www project check if that project search to work do we need to have our dx-meteasearch rust crate or what??? Now just research it no need to do anything right now!!!
+
+.\g.ps1; .\b.ps1
+
