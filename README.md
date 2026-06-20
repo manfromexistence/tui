@@ -361,3 +361,9 @@ providers
 serializer
 style
 Please fix the circleci config correctly so it can build them correctly in windows, mac, linux os and for keep the linux and macos commented out!!!
+
+Code and Extensions has been excluded that why its 19 projects!!!
+
+.\b.ps1
+.\g.ps1
+.\s.ps1
