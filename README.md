@@ -323,3 +323,20 @@ Copy-Item G:\Dx\www\target\release\dx-www.exe G:\Dx\bin\dx-www.exe -Force
 ✓ Ready in 5.9s
 
 No big explainations or No, need to create implementaion plan, tasks, or walkthrough - just please fix it correctly!!! Just do as I say as token efficienlty as possible as I am 7+ old experience programmer no a vibe coder - So, I know most of the stuffs!!!
+
+Now, in our all dx child folders like and also please create circleci for only windows like the cli, www in these child projects too correctly!!!
+agent
+check
+dcp
+driven
+extensions
+flow
+forge
+i18n
+icon
+media
+meteasearch
+providers
+serializer
+style
+Please use our just files setup and move the binary to bin folder and also use 12 jobs correctly and build and in release correctly in those places one by one correctly!!!
