@@ -420,3 +420,63 @@ foreach ($proj in $projects) {
 }
 ```
 
+
+---
+
+## CircleCI Windows Build - Known Errors & Fixes
+
+When configuring the CircleCI `.circleci/config.yml` (specifically for `windows-release` using `circleci/windows@5.0`), we encountered the following errors. All future configurations MUST strictly follow these fixes to prevent wasting CI resources.
+
+### 1. `gh` Executable Not Found (PATH Environment Variable Not Refreshed)
+**Error:** `The term 'C:\ProgramData\chocolatey\bin\gh.exe' is not recognized` OR `gh is not recognized`.
+**Cause:** `choco install gh` uses an MSI under the hood which installs `gh` to `C:\Program Files\GitHub CLI\gh.exe`. The current PowerShell session is completely unaware of this new path until the shell is reloaded.
+**Fix:** You must run `refreshenv` immediately after installing `gh`, and then call `gh` normally without hardcoded paths.
+```powershell
+choco install gh -y --no-progress --limit-output
+refreshenv
+$env:GH_TOKEN = [System.Environment]::GetEnvironmentVariable("CIRCLECI_GH_TOKEN")
+gh release create $tag ...
+```
+
+### 2. PowerShell 5.1 Pipeline Syntax Error (`||` or `&&`)
+**Error:** `The token '||' is not a recognized statement separator in this version.`
+**Cause:** CircleCI's default Windows image runs PowerShell 5.1, which does not support modern PowerShell 7 logical operators like `||` or `&&`.
+**Fix:** Replace `|| true` with `2>$null; $LASTEXITCODE = 0`.
+```powershell
+# BAD
+gh release create $tag ... || true
+
+# GOOD
+gh release create $tag ... 2>$null; $LASTEXITCODE = 0
+```
+
+### 3. Cargo Fails to Clone Private GitHub Dependencies
+**Error:** Cargo throws a Git authentication error when fetching dependencies that reside in private `essence-dx` repositories.
+**Cause:** The default CircleCI `checkout` step does not configure the runner's global git config with the project token. Cargo doesn't have the credentials to pull the other private crates.
+**Fix:** Explicitly pull the token from `[System.Environment]` and inject it into the global git config using `insteadOf` so all Cargo fetches automatically authenticate.
+```powershell
+$env:CIRCLECI_GH_TOKEN = [System.Environment]::GetEnvironmentVariable("CIRCLECI_GH_TOKEN")
+git config --global url."https://x-access-token:$env:CIRCLECI_GH_TOKEN@github.com/".insteadOf "https://github.com/"
+git config --global url."https://x-access-token:$env:CIRCLECI_GH_TOKEN@github.com/".insteadOf "ssh://git@github.com/"
+$env:CARGO_NET_GIT_FETCH_WITH_CLI = "true"
+```
+
+### 4. GitHub CLI (`gh`) Authentication Fails
+**Error:** `HTTP 401: Bad credentials` when running `gh release create`.
+**Cause:** The environment variables defined in the CircleCI UI project settings (like `CIRCLECI_GH_TOKEN`) are not natively mapped into PowerShell's local `$env:` scope.
+**Fix:** Explicitly assign the token to `$env:GH_TOKEN` immediately before running `gh` commands.
+```powershell
+$env:GH_TOKEN = [System.Environment]::GetEnvironmentVariable("CIRCLECI_GH_TOKEN")
+gh release ...
+```
+
+### 5. Missing Output Binaries (File Not Found)
+**Error:** The artifact upload fails because `dx-[project].exe` doesn't exist in `target/release/`.
+**Cause:** Different Rust crates produce different binary names (e.g., `target\release\check.exe` vs `target\release\dx-check.exe` vs `target\release\search_cli.exe`).
+**Fix:** Use robust `Test-Path` logic to safely locate the binary and normalize it before zipping.
+```powershell
+if (Test-Path "target\release\$proj.exe") { Copy-Item ... }
+if (Test-Path "target\release\dx-$proj.exe") { Copy-Item ... }
+```
+
+No, I mostly interested in building things one by one as in many projects there can separate or custom configurations and once you build all the project at least one time then we can use global script but not now!!! And from now on don't you dare do stupid mistakes - always be wa too much sure before triggering build as its costs credits!!!
