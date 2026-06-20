@@ -381,3 +381,42 @@ Now in our meteasearch www project check if that project search to work do we ne
 Now as you can see in our dx/icons folder we have added lobechat folder in the icon data so please create a script that creates a json file out of the icons in the lobechat use rust to do that and like our icon data and other data .json file please generate lobechat.json file too correctly in here "/g/Dx/icon/data/lobe-icons"
 
 Awesome now make sure that this lobechat new icon pack shows in the our code folder code editor icon panel and in our ai screen for the glm please use z.ai icons correctly using this lobechat and also in our plugin tab in our code editor make the plugins cells be bigger and put icons based on the names by mapping lobechat icons pack and also in the plugin that the scrollbar is acting weared and same plugins is showng multiple times so please fix that correctly
+
+### CircleCI Trigger and Monitor Scripts
+
+Use these PowerShell commands to trigger and monitor the `windows-release` pipeline across projects.
+
+**Trigger and wait for all remaining projects sequentially:**
+```powershell
+$token = "[YOUR_CIRCLE_TOKEN]"
+$projects = @("agent", "cli", "dcp", "driven", "extensions", "flow", "forge", "i18n", "icon", "js", "media", "metasearch", "native", "providers", "py", "serializer", "style", "www")
+
+foreach ($proj in $projects) {
+    Write-Host "Triggering $proj..."
+    $body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+    
+    try {
+        $pipe = Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/$proj/pipeline" -Method Post -Headers @{"Circle-Token"=$token; "Content-Type"="application/json"} -Body $body
+        Write-Host "Triggered Pipeline $($pipe.number) for $proj. Waiting to track jobs..."
+        Start-Sleep -Seconds 10
+        
+        $workflow = Invoke-RestMethod -Uri "https://circleci.com/api/v2/pipeline/$($pipe.id)/workflow" -Headers @{"Circle-Token"=$token} | Select-Object -ExpandProperty items | Select-Object -First 1
+        
+        while ($true) {
+            $jobs = Invoke-RestMethod -Uri "https://circleci.com/api/v2/workflow/$($workflow.id)/job" -Headers @{"Circle-Token"=$token} | Select-Object -ExpandProperty items
+            $releaseJob = $jobs | Where-Object { $_.name -eq "windows-release" }
+            
+            if ($releaseJob) {
+                Write-Host "$proj status: $($releaseJob.status)"
+                if ($releaseJob.status -eq "success" -or $releaseJob.status -eq "failed" -or $releaseJob.status -eq "canceled" -or $releaseJob.status -eq "unauthorized") {
+                    break
+                }
+            }
+            Start-Sleep -Seconds 30
+        }
+    } catch {
+        Write-Host "Failed $proj : $_"
+    }
+}
+```
+
