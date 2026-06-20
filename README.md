@@ -367,3 +367,6 @@ Code and Extensions has been excluded that why its 19 projects!!!
 .\b.ps1
 .\g.ps1
 .\s.ps1
+
+www framework build unorganized
+www framework build --sandbox with imgbb images and only file html!!!
