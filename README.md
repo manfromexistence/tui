@@ -373,3 +373,5 @@ www framework build unorganized
 Now this is what I need - we need to create a new command called dx www build --sandbox it will generate one www.html where it will litterly will have all .css and js and all html of that project and icons too but as images are not possible to have so we will upload the projects images "2c8180634cecec9ced202676d6f3c3f2" imgbb with this api key and mention that imgbb uploaded image url and and then we will use catbox that is free to upload other files and get that url and put that url in the places of that file and generate this www.html what will be previewable in any websites like grok which only shows one html file preview and gemini website, v0 and other places where its a online sandbox env and don't have access to close local file paths and things liek that so please create that "dx www build --sandbox and dx build --sandbox" command do that correctly!!!
 
 www framework build --sandbox with imgbb images and only file html!!!
+
+Now in our meteasearch www project check if that project search to work do we need to have our dx-meteasearch rust crate or what??? Now just research it no need to do anything right now!!!
