@@ -378,3 +378,6 @@ Now in our meteasearch www project check if that project search to work do we ne
 
 .\g.ps1; .\b.ps1
 
+Now as you can see in our dx/icons folder we have added lobechat folder in the icon data so please create a script that creates a json file out of the icons in the lobechat use rust to do that and like our icon data and other data .json file please generate lobechat.json file too correctly in here "/g/Dx/icon/data/lobe-icons"
+
+Awesome now make sure that this lobechat new icon pack shows in the our code folder code editor icon panel and in our ai screen for the glm please use z.ai icons correctly using this lobechat and also in our plugin tab in our code editor make the plugins cells be bigger and put icons based on the names by mapping lobechat icons pack and also in the plugin that the scrollbar is acting weared and same plugins is showng multiple times so please fix that correctly
