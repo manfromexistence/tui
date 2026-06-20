@@ -340,3 +340,24 @@ providers
 serializer
 style
 Please use our just files setup and move the binary to bin folder and also use 12 jobs correctly and build and in release correctly in those places one by one correctly!!!
+
+Good, now in our
+js
+py
+native
+build
+agent
+www
+cli
+dcp
+driven
+flow
+forge
+i18n
+icon
+media
+metesearch
+providers
+serializer
+style
+Please fix the circleci config correctly so it can build them correctly in windows, mac, linux os and for keep the linux and macos commented out!!!
