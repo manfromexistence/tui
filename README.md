@@ -622,3 +622,50 @@ Please implement the following features in the code editor:
    - Fix scrollbar styling for correct appearance and scrolling behavior.
    - Add a functional search bar at the top to filter plugins.
    - Include action icons with fully implemented functionality.
+
+
+## Objectives (What Must Be Achieved)
+
+### 1. Fix Forge Panel Internal Tab Crash (Repository, Projects, etc.)
+
+- Locate the Forge panel implementation and its internal tab system (tabs such as Repository, Projects, and any others).
+- Identify and fix the root cause of the crash that occurs when clicking or switching between these tabs.
+- Expected areas: GPUI tab rendering, focus handling, panel state management, subscription lifetime, or content view switching logic inside the Forge panel.
+- After the fix, tab switching must be stable, content must render correctly, and no crash may occur.
+- Add or extend a lightweight source guard (following the existing `code/script/dx-*-source.test.ts` pattern) that protects the Forge panel tab contract.
+
+### 2. Restore Relevant Panel Icon Button(s) in Sidebar / Status Bar Left Side
+
+- Restore the icon button(s) for the Forge panel (and any other panels whose icons were commented out) on the left side of the status bar or in the sidebar affordance area.
+- Ensure the icon is visible and functional in both expanded and collapsed sidebar states.
+- Clicking the icon must correctly show or focus the Forge panel without side effects.
+
+### 3. Refactor Project Panel — Move Custom Toolbar Actions into Tree Toolbar
+
+- Remove the separate custom toolbar currently present in the Project Panel.
+- Relocate every action item (icons and handlers) from that toolbar into the native toolbar/header area of the file/folder tree inside the Project Panel.
+- The integrated actions must match the visual and interaction style of a standard Zed project panel tree toolbar (spacing, tooltips, disabled states, accessibility).
+- After the change, explicitly verify that the media accordion / collapsible component at the bottom of the Project Panel continues to expand, collapse, and render its contents correctly with no layout or functional regression.
+
+### 4. Reshow Connect Tab Icon in Sidebar and Enhance the Existing Connect Tab with Professional QR Pairing
+
+- Reshow the Connect tab’s icon button in the left sidebar so it is visible and clickable in both expanded and collapsed sidebar modes.
+- Work inside the **already existing Connect tab/page** (do not create a new surface).
+- Update the Connect tab to use clean, professional GPUI components styled consistently with the current Extensions tab (cards, sections, semantic icons, proper typography, consistent spacing, no visual debt).
+- Place a clearly scannable QR code in the center of the Connect tab, accompanied by the raw pairing code / instance ID for manual entry.
+  - The QR payload must be a simple, versioned local pairing token (editor instance ID + session nonce + transport hint). Keep generation local and deterministic.
+- Include polished social / external connection items (reuse and improve the social media elements already present in the tab).
+- Add clear UI sections for:
+  - “Scan to connect mobile or CLI” guidance
+  - Connected devices list (with proper empty state)
+  - Pairing / sync options (future extension points)
+- On successful local “pair” action (button or simulated scan):
+  - Capture relevant current editor state (open sidebar panels / tabs, basic AI chat context summary — never secrets or full history).
+  
+  
+1. Media
+2. Icon
+3. Forge
+
+4. I18n
+5. Flow
