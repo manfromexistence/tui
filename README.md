@@ -530,15 +530,29 @@ Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla21
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/extensions/pipeline" -Method Post -Headers $headers -Body $body
 
 # Flow
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/flow/pipeline" -Method Post -Headers $headers -Body $body
 
 # Forge
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/forge/pipeline" -Method Post -Headers $headers -Body $body
 
 # I18n
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/i18n/pipeline" -Method Post -Headers $headers -Body $body
 
 # Icon
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/icon/pipeline" -Method Post -Headers $headers -Body $body
 
 # Js
@@ -552,17 +566,29 @@ $py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/media/pipeline" -Method Post -Headers $headers -Body $body
 
 # Metasearch
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/metasearch/pipeline" -Method Post -Headers $headers -Body $body
 
 # Native
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/native/pipeline" -Method Post -Headers $headers -Body $body
 
 # Providers
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/providers/pipeline" -Method Post -Headers $headers -Body $body
 
 # Py (Uses windows_release_artifacts parameter)
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/py/pipeline" -Method Post -Headers $headers -Body $py_body
 
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
 # Serializer
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/serializer/pipeline" -Method Post -Headers $headers -Body $body
 
