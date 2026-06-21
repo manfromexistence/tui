@@ -569,3 +569,26 @@ Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla21
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/www/pipeline" -Method Post -Headers $headers -Body $body
 ```
 
+Now, in our code editor please do these correctly:
+1. at our sideabr there is 12 grid cells right so when we do right click on there pleaseshow those 12 grid cell item rename, edit, delte and others options anad make them funtional correctly
+2. So in our topbar right side there is skills panel but those skills panel items are just dummy ai skill 1... and these styles please show actual skils title and description , featch them correctly in that panel, and in that panel in the top please put searchbar to search ai skills correctly!!! + In our topbar right there is another panel called ui panel or shadcn-ui panle so please put add, preview  and more icon there and make them funtional correctly
+3. We have our plugin tab and by our dx-icon lobechat icon pack please map all plugin nodes tiltes with icon names in the lobechat and render lobechat icon in those cards in the plugin tab and also in ther ethe scrollbar is not right and also in the top of our plugin tab please put search plugins serach corerctly and also make it funtional correctly and put action icons and make them funtional correctly
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Please implement the following features in the code editor:
+
+1. Sidebar Grid Cells
+   - The sidebar contains 12 grid cells.
+   - On right-click, display a context menu with options: Rename, Edit, Delete, and additional relevant actions.
+   - Ensure all options are fully functional with proper state management and UI updates.
+
+2. Topbar Right Panels
+   - Skills Panel: Replace placeholder items ("AI skill 1...") with actual fetched skill titles and descriptions. Add a functional real-time search bar at the top.
+   - Shadcn/ui Panel: Place action buttons correctly on each panel item row. Add functional icons/buttons for Add, Preview, and More with correct action handlers.
+
+3. Plugin Tab
+   - Map each plugin node title to the appropriate LobeChat icon pack icon and render it in the cards use our dx-icons and newly added lobechat icons correctly or you can also use svgl icon pack and render icons correctly.
+   - Fix scrollbar styling for correct appearance and scrolling behavior.
+   - Add a functional search bar at the top to filter plugins.
+   - Include action icons with fully implemented functionality.
