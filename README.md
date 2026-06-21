@@ -497,3 +497,75 @@ Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla21
                   -Headers @{"Circle-Token"=$token; "Content-Type"="application/json"} `
                   -Body $body
 
+### Manual Pipeline Trigger Commands (One by One)
+
+To trigger the projects manually one by one from your PowerShell terminal, copy the setup variables first, then run the specific command for the project you want to test.
+
+**1. Copy and paste this setup block into PowerShell FIRST:**
+```powershell
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
+```
+
+**2. Copy and paste ANY of these commands to trigger that specific project:**
+```powershell
+# Agent
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/agent/pipeline" -Method Post -Headers $headers -Body $body
+
+# Check
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/check/pipeline" -Method Post -Headers $headers -Body $body
+
+# Cli
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/cli/pipeline" -Method Post -Headers $headers -Body $body
+
+# Dcp
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/dcp/pipeline" -Method Post -Headers $headers -Body $body
+
+# Driven
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/driven/pipeline" -Method Post -Headers $headers -Body $body
+
+# Extensions
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/extensions/pipeline" -Method Post -Headers $headers -Body $body
+
+# Flow
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/flow/pipeline" -Method Post -Headers $headers -Body $body
+
+# Forge
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/forge/pipeline" -Method Post -Headers $headers -Body $body
+
+# I18n
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/i18n/pipeline" -Method Post -Headers $headers -Body $body
+
+# Icon
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/icon/pipeline" -Method Post -Headers $headers -Body $body
+
+# Js
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/js/pipeline" -Method Post -Headers $headers -Body $body
+
+# Media
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/media/pipeline" -Method Post -Headers $headers -Body $body
+
+# Metasearch
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/metasearch/pipeline" -Method Post -Headers $headers -Body $body
+
+# Native
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/native/pipeline" -Method Post -Headers $headers -Body $body
+
+# Providers
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/providers/pipeline" -Method Post -Headers $headers -Body $body
+
+# Py (Uses windows_release_artifacts parameter)
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/py/pipeline" -Method Post -Headers $headers -Body $py_body
+
+# Serializer
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/serializer/pipeline" -Method Post -Headers $headers -Body $body
+
+# Style
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/style/pipeline" -Method Post -Headers $headers -Body $body
+
+# Www
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/www/pipeline" -Method Post -Headers $headers -Body $body
+```
+
