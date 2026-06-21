@@ -1,4 +1,41 @@
-# DX Ecosystem Achievements
+So, dx is a super software created by me essencefromexistence/essence/sumon(Your best friend) - It already has
+
+1. Cli + Tui
+2. Mobile Apps(I am building it)
+3. Desktop apps(Zed code editor fork)
+
+In dx we have these tools:
+1. agent
+2. build
+3. code
+4. driven
+5. flow
+6. i18n
+7. media
+8. providers
+9. style
+10. check
+11. dcp
+12. forge
+13. icon
+14. metasearch
+15. py
+16. cli
+17. extensions
+18. js
+19. native
+20. serializer
+21. www
+
+So we forked:
+1. Zed(Dx Code)
+2. Rolldown(Dx Build)
+3. Tauri(Dx Native)
+4. Zeroclaw(Dx Agent)
+5. Bun(Dx Js)
+6. Cpython and Uv(Dx Py)
+
+# And in our DX Ecosystem we got these achievements
 
 This register captures what each top-level DX folder contributes to the
 ecosystem. It is intentionally validation-based: folder achievements should come
