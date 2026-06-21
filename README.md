@@ -480,3 +480,20 @@ if (Test-Path "target\release\dx-$proj.exe") { Copy-Item ... }
 ```
 
 No, I mostly interested in building things one by one as in many projects there can separate or custom configurations and once you build all the project at least one time then we can use global script but not now!!! And from now on don't you dare do stupid mistakes - always be wa too much sure before triggering build as its costs credits!!!
+
+
+Now, please tell me what happended and what commands are you using to trigger circleci project's build??
+
+$token = "YOUR_CIRCLECI_TOKEN"
+$body = @{
+    branch = "main"
+    parameters = @{
+        release_artifacts = $true # (or windows_release_artifacts = $true for py)
+    }
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/$proj/pipeline" `
+                  -Method Post `
+                  -Headers @{"Circle-Token"=$token; "Content-Type"="application/json"} `
+                  -Body $body
+
