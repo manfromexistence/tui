@@ -597,6 +597,10 @@ $py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/serializer/pipeline" -Method Post -Headers $headers -Body $body
 
 # Style
+$token = "YOUR_CIRCLECI_TOKEN"
+$headers = @{"Circle-Token"=$token; "Content-Type"="application/json"}
+$body = @{ branch = "main"; parameters = @{ release_artifacts = $true } } | ConvertTo-Json
+$py_body = @{ branch = "main"; parameters = @{ windows_release_artifacts = $true } } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://circleci.com/api/v2/project/github/millercarla211-ctrl/style/pipeline" -Method Post -Headers $headers -Body $body
 
 # Www
