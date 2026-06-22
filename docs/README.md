@@ -43,7 +43,7 @@ which wording still needs fresh verification before it can be used publicly.
 
 Current pages:
 
-- [`zed.md`](zed.md): DX editor surface achievements.
+- [`code.md`](code.md): DX editor surface achievements.
 - [`cli.md`](cli.md): DX command interface and TUI achievements.
 - [`www.md`](www.md): DX WWW framework/runtime achievements.
 - [`agent.md`](agent.md): DX Agents runtime achievements.
