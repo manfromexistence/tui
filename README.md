@@ -685,3 +685,91 @@ Please implement the following features in the code editor:
 3. Serializer
 4. Style
 5. Www
+
+---------------------------------------------------------------------------------------------------------------
+
+Task: Build my Rust project in release mode and produce a Linux binary.
+
+Please perform the following steps in order:
+
+1. **Environment Check**
+   - Verify Rust toolchain is installed (`rustc --version`, `cargo --version`)
+   - If not installed, install via rustup with the stable toolchain
+   - Ensure the target `x86_64-unknown-linux-gnu` is available (add it if missing: `rustup target add x86_64-unknown-linux-gnu`)
+
+2. **Dependency Resolution**
+   - Run `cargo fetch` to download all dependencies
+   - Run `cargo check --release` first to catch compilation errors quickly before a full build
+
+3. **Release Build**
+   - Execute: `cargo build --release --target x86_64-unknown-linux-gnu`
+   - Use all available CPU cores for faster compilation
+   - Do NOT modify my `Cargo.toml` release profile unless I explicitly approve it
+
+4. **Binary Verification**
+   - Locate the compiled binary at `target/x86_64-unknown-linux-gnu/release/<binary_name>`
+   - Run `file <binary>` to confirm it's an ELF 64-bit Linux executable
+   - Run `ldd <binary>` to list dynamic dependencies
+   - Run `./<binary> --version` or `--help` (if applicable) to confirm it executes
+
+5. **Optional Optimization (ask me before applying)**
+   - Suggest enabling LTO, `codegen-units = 1`, and `strip = true` in `[profile.release]` for a smaller/faster binary
+   - Suggest building with `--target x86_64-unknown-linux-musl` if I need a fully static binary
+
+6. **Output**
+   - Print the final binary path
+   - Print the binary size (`ls -lh`)
+   - Summarize any warnings from the build
+
+Constraints:
+- Do NOT commit or push anything unless I tell you to
+- Do NOT change source code unless required to fix a build error (and explain the change first)
+- If the build fails, show me the full error and propose a fix before retrying
+- Report back at each major step
+
+---------------------------------------------------------------------------------------------------------------
+
+Excellent work! Yes, please proceed with the following optimizations and additional build:
+
+PART 1: Apply Release Profile Optimizations
+Update my Cargo.toml to add the following [profile.release] settings for maximum optimization:
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+Then rebuild the Linux binary in release mode and report:
+- New binary size (compare to the previous 1.6 MB)
+- Confirm it still runs correctly with ./dcp --help
+- Path to the optimized binary
+
+PART 2: Also Build a Fully Static Linux Binary (musl)
+Build with the musl target for a fully statically-linked, portable Linux binary:
+- Install the musl target: rustup target add x86_64-unknown-linux-musl
+- Install musl-tools if needed (sudo apt-get install -y musl-tools)
+- Build: cargo build --release --target x86_64-unknown-linux-musl
+- Verify with `file` command that it shows "statically linked"
+- Report the binary path and size
+
+PART 3: Cross-Compile for Windows (x86_64-pc-windows-gnu)
+In the Jules VM, set up cross-compilation for Windows:
+- Install the MinGW-w64 toolchain: sudo apt-get install -y mingw-w64
+- Add the Rust target: rustup target add x86_64-pc-windows-gnu
+- Build: cargo build --release --target x86_64-pc-windows-gnu
+- Verify the output is a PE32+ Windows executable using the `file` command
+- Report the path (should be target/x86_64-pc-windows-gnu/release/dcp.exe) and size
+
+PART 4: Final Summary
+Provide a summary table with all three binaries:
+| Target | Path | Size | Type |
+|--------|------|------|------|
+| Linux (glibc) | ... | ... | Dynamically linked ELF |
+| Linux (musl) | ... | ... | Statically linked ELF |
+| Windows | ... | ... | PE32+ executable |
+
+Do NOT run tests yet — I want to verify all three builds first. Proceed step by step and report after each part.
+
+---------------------------------------------------------------------------------------------------------------
