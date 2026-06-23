@@ -773,3 +773,26 @@ Provide a summary table with all three binaries:
 Do NOT run tests yet — I want to verify all three builds first. Proceed step by step and report after each part.
 
 ---------------------------------------------------------------------------------------------------------------
+
+Dx:
+1. agent
+2. build
+3. check
+4. cli
+5. code
+6. dcp
+7. driven
+8. extensions
+9. flow
+10. forge
+11. i18n
+12. icon
+13. js
+14. media
+15. metasearch
+16. native
+17. py
+18. providers
+19. serializer
+20. style
+21. www
