@@ -7,24 +7,24 @@ So, dx is a super software created by me essencefromexistence/essence/sumon(Your
 In dx we have these tools:
 1. agent
 2. build
-3. code
-4. driven
-5. flow
-6. i18n
-7. media
-8. providers
-9. style
-10. check
-11. dcp
-12. forge
-13. icon
-14. metasearch
-15. py
-16. cli
-17. extensions
-18. js
-19. native
-20. serializer
+3. check
+4. cli
+5. code
+6. dcp
+7. driven
+8. extensions
+9. flow
+10. forge
+11. i18n
+12. icon
+13. js
+14. media
+15. metasearch
+16. native
+17. py
+18. providers
+19. serializer
+20. style
 21. www
 
 So we forked:
