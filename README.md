@@ -798,3 +798,7 @@ Dx:
 21. www
 
 wsl -d Ubuntu-24.04
+
+Now, in our code editor please do these 2 tasks
+1. At our statusbar center there is 9 web tools icons and when we are clicking that we are opening our webscreen as a new tab in the right but we need to close current screen and open webpreview screen now even through we are opening the webpreview screen but not closing current screen so please close current screen first if we are not already in web preview screen
+2. At our ai screen chat input box at the ai provider dropdown there is so much providers but they are hardcoded so please don't show ai prvodiers if not configured and also there is a free ai providers and it will be in the top or just make them recommended models!!!
