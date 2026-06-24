@@ -796,3 +796,5 @@ Dx:
 19. serializer
 20. style
 21. www
+
+wsl -d Ubuntu-24.04
