@@ -4,29 +4,84 @@
 
 | # | Project | Size | Jobs | Windows x64 | Linux x64 | Linux ARM64 | macOS Intel | macOS ARM64 |
 |--:|---------|:----:|:----:|:-----------:|:---------:|:-----------:|:-----------:|:-----------:|
-| 1 | agent | large | 4 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 2 | build | large | 6 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| 1 | agent | large | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 2 | build | large | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 3 | check | small | 12 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 4 | cli | large | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 5 | dcp | small | 12 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 6 | driven | medium | 8 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| 6 | driven | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 7 | flow | medium | 8 | ✅ | ❌ | ❌ | ❌ | ❌ |
-| 8 | forge | medium | 8 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 9 | i18n | small | 12 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| 8 | forge | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 9 | i18n | small | 12 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 10 | icon | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 11 | js | very large | 4 | ✅ | ❌ | ❌ | ❌ | ❌ |
-| 12 | media | medium | 8 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 13 | metasearch | medium | 8 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 14 | native | medium | 6 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 15 | providers | small | 12 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 16 | py | large | 6 | ✅ | ❌ | ❌ | ❌ | ❌ |
+| 12 | media | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 13 | metasearch | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 14 | native | medium | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 15 | providers | small | 12 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 16 | py | large | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 17 | serializer | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 18 | style | medium | 8 | ✅ | ✅ | ✅ | ❌ | ❌ |
-| 19 | www | medium | 6 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| 18 | style | medium | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 19 | www | medium | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-**19/19 Windows x64 ✅ | 16/19 Linux x64 ✅ | 16/19 Linux ARM64 ✅ | 5/19 macOS ✅** (serializer, check, dcp, icon, cli). Blockers: flow (X11+ALSA system deps), py (tikv-jemalloc-sys cross-compile), js (nightly toolchain + complex deps). macOS needs Apple SDK for the remaining 14 projects — they link Apple frameworks (`CoreFoundation`, `Security`, `CoreServices`, `AudioUnit`) unavailable in zig's bundled SDK.
+**19/19 Windows x64 ✅ | 17/19 Linux x64 ✅ | 17/19 Linux ARM64 ✅ | 17/19 macOS x64 ✅ | 17/19 macOS ARM64 ✅**. Build date: 2026-06-26.
 
-> **Linux ARM64 built 2026-06-26.** All 16 projects built via `cargo zigbuild --target aarch64-unknown-linux-gnu`. Two key fixes applied: (1) added `libc` dep to `www/related-crates/style/Cargo.toml` for Unix-platform code, (2) overrode `target-cpu=native` from `metasearch/.cargo/config.toml` for aarch64 (z3 CPU features invalid on ARM). `build` (rolldown) and `py` (uv) use custom Rust toolchain pins (1.96.0) — their ARM64 target std must be installed explicitly: `rustup target add --toolchain <triple-name> aarch64-unknown-linux-gnu`.
+---
+
+## DX Config Ecosystem — 20 Projects × 6 Questions
+
+Which tools have/read the extensionless `dx` LLM-format config file, and which use `.dx/` receipts/serializer/machine cache infrastructure.
+
+| # | Project | Has `dx` file? | Has `.dx/` dir? | Reads `dx` for config? | Uses `.dx/` paths? | Uses `.sr`? | Uses `.machine`? |
+|--:|---------|:--------------:|:----------------:|:----------------------:|:-------------------:|:-----------:|:----------------:|
+| 1 | agent | no | no | no | no | no | no |
+| 2 | agent-zeroclaw | no | no | no | no | no | no |
+| 3 | build | no | YES | no | no | no | no |
+| 4 | check | YES | YES | **YES** — `llm_to_document` for web audit targets | **YES** — `.dx/` approved cache paths | no | **YES** — scans `.dx/*.machine` |
+| 5 | cli | `dx.toml` | no | **partial** — parses as TOML, skips LLM-format | **YES** — receipts, cache, bridge paths | **YES** — `.dx/check/*.sr` contracts | **YES** — `.dx/serializer/*.machine` |
+| 6 | dcp | no | no | no | no | no | no |
+| 7 | driven | no | no | no | no | no | no |
+| 8 | flow | no | no | no | no | no | no |
+| 9 | forge | no | no | no | **YES** — scans `.dx/*.machine` for dx-status | no | **YES** — reads `.machine` files |
+| 10 | i18n | no | no | no | no | no | no |
+| 11 | icon | no | no | no | no | no | no |
+| 12 | js | no | YES | no | no | no | no |
+| 13 | media | no | no | no | no | no | no |
+| 14 | metasearch | no | YES | no | no | no | no |
+| 15 | native | no | no | no | no | no | no |
+| 16 | providers | no | no | no | no | no | no |
+| 17 | py (package-manager) | no | no | no | no | no | no |
+| 18 | serializer | no | no | no | **YES** — `.dx/serializer/mappings.dx` | **YES** — generates `.sr` files | **YES** — generates `.machine` files |
+| 19 | style | no | YES | no | no | no | no |
+| 20 | www | no | YES | **YES** — `from_dx_str()` for user project config | **YES** — `.dx/cache` dir | no | no |
+
+**Key findings:**
+- Only **2 tools** correctly parse the `dx` LLM-format config: **www** (for user projects) and **check** (for web audit targets)
+- **cli** reads `dx` files but as TOML; actively **skips** LLM-format ones via `looks_like_project_serializer_config()`
+- **5 tools** have `.dx/` directories on disk: build, check, js, metasearch, style, www — but only check, forge, cli, serializer, and www actively use them in code
+- **Serializer** is the infrastructure owner: generates `.sr` receipts and `.machine` caches consumed by check, cli, and forge
+- **16/20 tools** do not read any `dx` config at all
+
+Windows: all 19 ✅. Linux: flow (C++ stdlib/gomp linkage with zig), js (windows-only). macOS: flow (ort prebuilts unavailable for x86_64-apple-darwin; try `ort-tract` backend; aarch64 also fails with CoreML/C++17 linkage), js (windows-only).
+
+### Linux cross-compilation notes
+- flow needs `--no-default-features` (X11/ALSA gating already in Cargo.toml), but fails with:
+  - `libgomp.so` found in multiple locations (llama-cpp-sys-2, ort download cache, rustup sysroot) causing linker conflicts
+  - `std::filesystem` undefined symbol from `ort_sys` — zig's C++ stdlib lacks C++17 filesystem support
+- js (windows-only) — not attempted
+- py previously blocked by `tikv-jemalloc-sys` — fixed by `--no-default-features --features "uv-distribution/static"`
+- All others build cleanly with `cargo zigbuild`
+
+### macOS cross-compilation notes
+All macOS Intel (x86_64-apple-darwin) and ARM64 (aarch64-apple-darwin) builds completed 2026-06-26 — **17/19** both targets.
+- **SDKROOT**: `G:\osxcross\target\SDK\MacOSX11.3.sdk`
+- **Deployment target**: `MACOSX_DEPLOYMENT_TARGET=10.15`
+- **Framework symlinks**: macOS SDK 7z extraction breaks `Headers`, `Versions/Current`, `Modules` symlinks in frameworks (0-byte files). Fix: recursive copy from `Versions/A/` for all 1460+ `.framework` dirs.
+- **Key fixes**: `whisper.cpp` CMakeLists.txt modified to skip `FIND_PACKAGE(Accelerate FATAL_ERROR)` (cross-compile can't find macOS frameworks via `find_library`); `ggml/src/CMakeLists.txt` has Metal backend disabled (`ggml_add_backend(METAL)`); empty `libclang_rt.osx.a` stub placed in cargo-zigbuild deps to satisfy linker; `llama-cpp-sys-2/build.rs` modified to skip `clang_rt.osx` linking on Windows host
+- **Blockers**:
+  - flow: `ort` crate has no prebuilt binaries for `x86_64-apple-darwin`; aarch64 also fails with undefined CoreML symbols (`MLPredictionOptions`) requiring `-framework CoreML`, plus C++17 `std::filesystem` linkage issues
+  - js: windows-only
+- **Toolchain pins**: build (1.96.0), py (1.96.0) need `rustup target add --toolchain <ver>-x86_64-pc-windows-msvc <triple>`
 
 ---
 
@@ -105,7 +160,7 @@ Each project's binaries land in `G:\Dx\bin` with the naming pattern:
 | agent | `dx-agent.exe` | `dx-agent` |
 | build | `dx-build.exe` | `dx-build` |
 | check | `dx-check.exe` | `dx-check` |
-| cli | `dx.exe` | `dx` |
+| cli | `dx.exe` | `dx-cli` |
 | dcp | `dcp.exe` | `dx-dcp` |
 | driven | `driven.exe` | `dx-driven` |
 | flow | `flow.exe` | `dx-flow` |
@@ -165,15 +220,7 @@ libc = "0.2"
 
 ### `metasearch/.cargo/config.toml` — `target-cpu=native` blocks ARM64 cross-compile
 
-Setting `target-cpu=native` globally causes cargo-zigbuild to pass `-mcpu=native` to zig's C compiler, which maps to the host CPU (e.g., `znver3` on AMD Zen 3). This is invalid for ARM64 targets. Fixed by adding target-specific overrides:
-
-```toml
-[target.aarch64-unknown-linux-gnu]
-rustflags = []
-
-[target.aarch64-unknown-linux-musl]
-rustflags = []
-```
+Setting `target-cpu=native` globally causes cargo to pass `-C target-cpu=znver3` on AMD hosts, which is invalid for ARM64 targets (the `ring` crate fails on unrecognized CPU features). Cargo merges global `[build].rustflags` with per-target flags (does not replace). Fixed by moving `target-cpu=native` from global `[build]` to per-target `[target.x86_64-*]` only, with empty lists for ARM64 targets:
 
 Projects with custom `rust-toolchain.toml` pins (build → 1.96.0, js → nightly, py → 1.96.0) require the target std to be installed for that specific toolchain:
 

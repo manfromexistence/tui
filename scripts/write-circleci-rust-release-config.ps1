@@ -19,7 +19,7 @@ function Get-ProjectProfiles {
             ProjectName = 'dx-serializer'
             Repository = 'dx-serializer'
             Package = 'dx-serializer'
-            Binaries = @('dx-serialize')
+            Binaries = @('dx-serializer')
             Dependencies = @()
         }
         check = [ordered]@{
