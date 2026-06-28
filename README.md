@@ -808,3 +808,4 @@ Now a simple task - in our code at the statusbar there are 9 icons in the center
 https://github.com/GrapesJS/grapesjs
 https://github.com/Egonex-AI/Understand-Anything
 https://github.com/anil-matcha/open-generative-ai
+https://github.com/debpalash/OmniVoice-Studio
