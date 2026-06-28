@@ -809,3 +809,4 @@ https://github.com/GrapesJS/grapesjs
 https://github.com/Egonex-AI/Understand-Anything
 https://github.com/anil-matcha/open-generative-ai
 https://github.com/debpalash/OmniVoice-Studio
+https://github.com/pheralb/svgl
