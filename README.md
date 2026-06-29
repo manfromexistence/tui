@@ -810,3 +810,5 @@ https://github.com/Egonex-AI/Understand-Anything
 https://github.com/anil-matcha/open-generative-ai
 https://github.com/debpalash/OmniVoice-Studio
 https://github.com/pheralb/svgl
+
+Now, in our codex project we need add providers from "g:dx/providers" rust crate and also need to add support to run model locally via "g:dx/flow" and also need to use that flow to run local model and in our "g:dx/code" there is 5 opencode models at the providers like called "free" providers we need to add those models by defalt at the codex correctly as those are free for any anyone - so first just do a research about is it possible to do these in our "g:dx/codex" or not and also out of 100% how hard or easy to do that??
