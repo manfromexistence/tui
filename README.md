@@ -816,3 +816,11 @@ Now, in our codex project we need add providers from "g:dx/providers" rust crate
 1. Memory
 2. reach
 3. voicebox
+
+Look at the g:dx/agent folder and check in the g:dx/agent/inspirations/ openclaw+hermes-agent+deer-flow folder and check what unique features do those 3 projects and vs that what our g:dx/agent folder has and can we connect to the 3 project best features like openclaw has professional proven channels, gateway and hermes-agent has auto updating system and deer-flow can orchestrate multiple ai agents at once - so none of the project is perfect - but in our dx-agent we will integrate all those 3 projects as dx-agent is builted in rust which supports to connect to other programming language far more better than any other programming language - So plan how we can connect and use those project instead of creating ai sloppy version of those!!!
+
+Now, we will not like use the whole thing but will maintain custom forked version of these 3 projects means we will not need the whole openclaw, hermes-agent and deer-flow  and we will like use it separately - not the whole thing as those 3 in a whole are not that useful to use in any way!!!
+
+rm -rf .git node_modules .next
+rm -rf .git && git init && git add . && git commit -m "feat: initial commit"
+bun install && bun run dev
